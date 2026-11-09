@@ -1,0 +1,88 @@
+extends ContentInfo
+
+var TapeButtonStorage : Array
+
+func init_content() -> void:
+	#Everything here are used to replace files with tape button in it.
+	var replacetapebuttonscene : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/TapeButton.tscn")
+	replacetapebuttonscene.take_over_path("res://menus/party/TapeButton.tscn")
+	TapeButtonStorage.push_back(replacetapebuttonscene)
+	
+	var ReTapeList : Resource = preload("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tscn that has tapebutton in it/ChooseTapeList.tscn")
+	ReTapeList.take_over_path("res://menus/choose_tape/ChooseTapeList.tscn")
+	TapeButtonStorage.push_back(ReTapeList)
+	
+	var ReEvoMenu : Resource = preload("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tscn that has tapebutton in it/EvolutionMenu.tscn")
+	ReEvoMenu.take_over_path("res://menus/evolution/EvolutionMenu.tscn.tscn")
+	TapeButtonStorage.push_back(ReEvoMenu)
+	
+	var ReGivTape : Resource = preload("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tscn that has tapebutton in it/GiveTapeMenu.tscn")
+	ReGivTape.take_over_path("res://menus/give_tape/GiveTapeMenu.tscn")
+	TapeButtonStorage.push_back(ReGivTape)
+	
+	var ReIllu : Resource = preload("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tscn that has tapebutton in it/Illustration.tscn")
+	ReIllu.take_over_path("res://menus/illustration/Illustration.tscn")
+	TapeButtonStorage.push_back(ReIllu)
+	
+	var RePartyChar : Resource = preload("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tscn that has tapebutton in it/PartyCharacterMenu.tscn")
+	RePartyChar.take_over_path("res://menus/party_character/PartyCharacterMenu.tscn")
+	TapeButtonStorage.push_back(RePartyChar)
+	
+	var RePartyMem : Resource = preload("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tscn that has tapebutton in it/PartyMemberButton.tscn")
+	RePartyMem.take_over_path("res://menus/party/PartyMemberButton.tscn")
+	TapeButtonStorage.push_back(RePartyMem)
+	
+	var RePartyMenu : Resource = preload("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tscn that has tapebutton in it/PartyMenu.tscn")
+	RePartyMenu.take_over_path("res://menus/party/PartyMenu.tscn")
+	TapeButtonStorage.push_back(RePartyMenu)
+	
+	var ReSmallTape : Resource = preload("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tscn that has tapebutton in it/SmallTapeButton.tscn")
+	ReSmallTape.take_over_path("res://menus/choose_tape/SmallTapeButton.tscn")
+	TapeButtonStorage.push_back(ReSmallTape)
+	
+	var ReOptiTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_optical_laser.tres")
+	ReOptiTape.take_over_path("res://data/items/tape_optical_laser.tres")
+	TapeButtonStorage.push_back(ReOptiTape)
+	var ReShuckTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_black_shuck.tres")
+	ReShuckTape.take_over_path("res://data/items/tape_black_shuck.tres")
+	TapeButtonStorage.push_back(ReShuckTape)
+	var ReAirTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_air.tres")
+	ReAirTape.take_over_path("res://data/items/tape_air.tres")
+	TapeButtonStorage.push_back(ReAirTape)
+	var ReAstralTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_astral.tres")
+	ReAstralTape.take_over_path("res://data/items/tape_astral.tres")
+	TapeButtonStorage.push_back(ReAstralTape)
+	var ReBeastTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_beast.tres")
+	ReBeastTape.take_over_path("res://data/items/tape_beast.tres")
+	TapeButtonStorage.push_back(ReBeastTape)
+	var ReLightningTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_lightning.tres")
+	ReLightningTape.take_over_path("res://data/items/tape_lightning.tres")
+	TapeButtonStorage.push_back(ReLightningTape)
+	var ReFireTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_fire.tres")
+	ReFireTape.take_over_path("res://data/items/tape_fire.tres")
+	TapeButtonStorage.push_back(ReFireTape)
+	var ReEarthTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_earth.tres")
+	ReEarthTape.take_over_path("res://data/items/tape_earth.tres")
+	TapeButtonStorage.push_back(ReEarthTape)
+	var ReIceTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_ice.tres")
+	ReIceTape.take_over_path("res://data/items/tape_ice.tres")
+	TapeButtonStorage.push_back(ReIceTape)
+	var ReMetalTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_metal.tres")
+	ReMetalTape.take_over_path("res://data/items/tape_metal.tres")
+	TapeButtonStorage.push_back(ReMetalTape)
+	var RePlantTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_plant.tres")
+	RePlantTape.take_over_path("res://data/items/tape_plant.tres")
+	TapeButtonStorage.push_back(RePlantTape)
+	var RePlasticTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_plastic.tres")
+	RePlasticTape.take_over_path("res://data/items/tape_plastic.tres")
+	TapeButtonStorage.push_back(RePlasticTape)
+	var RePoisonTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_poison.tres")
+	RePoisonTape.take_over_path("res://data/items/tape_poison.tres")
+	TapeButtonStorage.push_back( RePoisonTape)
+	var ReWaterTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_water.tres")
+	ReWaterTape.take_over_path("res://data/items/tape_water.tres")
+	TapeButtonStorage.push_back(ReWaterTape)
+	var ReChromeTape : Resource = load("res://mods/Custom Tape Buttons/ReplaceTapeStuff/tres files for replacement/tape_chrome.tres")
+	ReChromeTape.take_over_path("res://data/items/tape_chrome.tres")
+	TapeButtonStorage.push_back(ReChromeTape)
+	

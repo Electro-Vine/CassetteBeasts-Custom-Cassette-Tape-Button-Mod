@@ -1,0 +1,244 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/icons/types/element_beast.png" type="Texture" id=2]
+[ext_resource path="res://menus/party/ExpBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/party/tape.png" type="Texture" id=4]
+[ext_resource path="res://ui/party/favorite.png" type="Texture" id=5]
+[ext_resource path="res://ui/party/tape_behind.png" type="Texture" id=6]
+[ext_resource path="res://ui/party/tape_hp.png" type="Texture" id=7]
+[ext_resource path="res://ui/party/tape_exp.png" type="Texture" id=8]
+[ext_resource path="res://ui/party/tape_overlay.png" type="Texture" id=9]
+[ext_resource path="res://ui/party/tape_exp_back.png" type="Texture" id=10]
+[ext_resource path="res://nodes/menus/ScaleToFitParent.gd" type="Script" id=11]
+[ext_resource path="res://mods/Custom Tape Buttons/ReplaceTapeStuff/TapeButton(Replacement).gd" type="Script" id=12]
+[ext_resource path="res://menus/party/GradeStars.tscn" type="PackedScene" id=13]
+[ext_resource path="res://menus/party/TapeReel.tscn" type="PackedScene" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 0.501961 )
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="TapeButton" type="TextureButton"]
+rect_min_size = Vector2( 640, 410 )
+rect_pivot_offset = Vector2( 320, 205 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+texture_normal = ExtResource( 4 )
+script = ExtResource( 12 )
+
+[node name="ScaleToFitParent" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 640, 410 )
+mouse_filter = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="ScaleToFitParent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+
+[node name="MonsterSticker" type="TextureRect" parent="ScaleToFitParent/PanelContainer"]
+margin_top = 410.0
+margin_bottom = 410.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="ScaleToFitParent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScaleToFitParent/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 608.0
+margin_bottom = 378.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="ScaleToFitParent/MarginContainer/VBoxContainer"]
+margin_right = 576.0
+margin_bottom = 81.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 2 )
+
+[node name="HPBar" type="TextureProgress" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer"]
+margin_right = 576.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 0, 81 )
+max_value = 10000.0
+value = 5000.0
+texture_progress = ExtResource( 7 )
+nine_patch_stretch = true
+stretch_margin_left = 9
+stretch_margin_top = 9
+stretch_margin_right = 9
+stretch_margin_bottom = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer"]
+margin_top = 8.0
+margin_right = 576.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 64 )
+size_flags_vertical = 6
+custom_constants/separation = 12
+
+[node name="Padding" type="Control" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+margin_bottom = 64.0
+mouse_filter = 1
+
+[node name="TypeIconContainer" type="HBoxContainer" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 12.0
+margin_right = 54.0
+margin_bottom = 64.0
+custom_constants/separation = 16
+
+[node name="TypeIcon" type="TextureRect" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/TypeIconContainer"]
+margin_top = 11.0
+margin_right = 42.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 42, 42 )
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+expand = true
+
+[node name="NameLabel" type="Label" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 66.0
+margin_top = 2.0
+margin_right = 487.0
+margin_bottom = 62.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Monster Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 499.0
+margin_right = 564.0
+margin_bottom = 64.0
+alignment = 1
+
+[node name="FavoriteIcon" type="TextureRect" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="GradeStars" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer" instance=ExtResource( 13 )]
+margin_left = 36.0
+margin_right = 65.0
+
+[node name="Padding2" type="Control" parent="ScaleToFitParent/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 576.0
+margin_right = 576.0
+margin_bottom = 64.0
+mouse_filter = 1
+
+[node name="ExpBar" parent="ScaleToFitParent/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 81.0
+margin_bottom = 95.0
+size_flags_vertical = 0
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 8 )
+
+[node name="Overlay" type="TextureRect" parent="ScaleToFitParent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Unchooseable" type="Panel" parent="ScaleToFitParent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScaleToFitParent2" type="Control" parent="."]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 640, 410 )
+mouse_filter = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BehindContainer" type="MarginContainer" parent="ScaleToFitParent2"]
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 634.0
+margin_bottom = 406.0
+mouse_filter = 1
+custom_constants/margin_left = 1
+custom_constants/margin_bottom = 28
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ScaleToFitParent2/BehindContainer"]
+margin_left = 121.0
+margin_top = 123.0
+margin_right = 508.0
+margin_bottom = 251.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource( 6 )
+
+[node name="Reels" type="Control" parent="ScaleToFitParent2/BehindContainer"]
+margin_left = 1.0
+margin_right = 628.0
+margin_bottom = 374.0
+mouse_filter = 1
+
+[node name="LeftReel" parent="ScaleToFitParent2/BehindContainer/Reels" instance=ExtResource( 14 )]
+anchor_left = 0.294
+anchor_top = 0.5
+anchor_right = 0.294
+anchor_bottom = 0.5
+
+[node name="RightReel" parent="ScaleToFitParent2/BehindContainer/Reels" instance=ExtResource( 14 )]
+anchor_left = 0.707
+anchor_top = 0.5
+anchor_right = 0.707
+anchor_bottom = 0.5
+direction = -1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "UI"

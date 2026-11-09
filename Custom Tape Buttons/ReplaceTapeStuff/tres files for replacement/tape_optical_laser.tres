@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://mods/Custom Tape Buttons/ReplaceTapeStuff/BlankTapeNew.gd" type="Script" id=1]
+[ext_resource path="res://sprites/items/tape_optical_laser.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "ITEM_TAPE_OPTICAL_LASER_NAME"
+aux_name = ""
+icon = ExtResource( 2 )
+description = "ITEM_TAPE_OPTICAL_LASER_DESCRIPTION"
+category = "tapes"
+base_stack_limit = 0
+stack_limit_category = ""
+consume_on_use = true
+discardable = false
+value = 50000
+usable_contexts = 2
+battle_usage = 1
+skip_multiplayer_replication = false
+sort_order = 30
+capture_rate = -1
+type_affinity_rate_boost = 0
+rarity = 2

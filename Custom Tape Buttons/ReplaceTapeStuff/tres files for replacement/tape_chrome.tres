@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://sprites/items/tape_chrome.png" type="Texture" id=1]
+[ext_resource path="res://mods/Custom Tape Buttons/ReplaceTapeStuff/BlankTapeNew.gd" type="Script" id=2]
+[ext_resource path="res://data/items/metal.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 2 )
+name = "ITEM_TAPE_CHROME_NAME"
+aux_name = ""
+icon = ExtResource( 1 )
+description = "ITEM_TAPE_CHROME_DESCRIPTION"
+category = "tapes"
+base_stack_limit = 0
+stack_limit_category = ""
+consume_on_use = true
+discardable = true
+recycle_to = ExtResource( 3 )
+value = 350
+usable_contexts = 2
+battle_usage = 1
+skip_multiplayer_replication = false
+sort_order = 10
+capture_rate = 350
+type_affinity_rate_boost = 0
+rarity = 1

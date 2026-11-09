@@ -1,0 +1,197 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://menus/BaseMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://menus/menu_bg_fade.shader" type="Shader" id=2]
+[ext_resource path="res://mods/Custom Tape Buttons/ReplaceTapeStuff/TapeButton(Replacement).gd" type="Script" id=3]
+[ext_resource path="res://menus/party/TapeButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sfx/ui/item_get.ogg" type="AudioStream" id=5]
+[ext_resource path="res://menus/give_tape/GiveTapeMenu.gd" type="Script" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+render_priority = 127
+shader = ExtResource( 2 )
+shader_param/progress = 1.0
+shader_param/max_alpha = 1.0
+shader_param/base_color = Color( 0.1686, 0.1098, 0.2235, 1 )
+shader_param/hi_color = Color( 0.6706, 0.4588, 0.9098, 0.0625 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Blur:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scroller:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Scroller:margin_top")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -200 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Scroller:margin_bottom")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, -200 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "transition_2d"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Scroller/OverscanMarginContainer/CenterContainer/Tape2DContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0.2 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Scroller/OverscanMarginContainer/CenterContainer/Tape2DContainer/TapeRim:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.04, 1.06 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Scroller/OverscanMarginContainer/CenterContainer/Tape2DContainer/Tape2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Scroller/OverscanMarginContainer/CenterContainer/Tape2DContainer/TapeRim:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="GiveTapeMenu" instance=ExtResource( 1 )]
+script = ExtResource( 6 )
+cancelable = false
+show_hide_anim = "default"
+tape = null
+
+[node name="Blur" parent="." index="0"]
+visible = false
+material = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/hide = SubResource( 2 )
+anims/transition_2d = SubResource( 3 )
+
+[node name="OverscanMarginContainer" parent="Scroller" index="0"]
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+vertical_margin = false
+horizontal_margin = false
+
+[node name="CenterContainer" type="CenterContainer" parent="Scroller/OverscanMarginContainer" index="0"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="Tape2DContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/CenterContainer" index="0"]
+visible = false
+margin_left = 640.0
+margin_top = 335.0
+margin_right = 1280.0
+margin_bottom = 745.0
+rect_min_size = Vector2( 640, 410 )
+
+[node name="TapeRim" type="PanelContainer" parent="Scroller/OverscanMarginContainer/CenterContainer/Tape2DContainer" index="0"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 634.0
+margin_bottom = 406.0
+rect_pivot_offset = Vector2( 320, 205 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="Tape2D" parent="Scroller/OverscanMarginContainer/CenterContainer/Tape2DContainer" index="1" instance=ExtResource( 4 )]
+visible = false
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 646.0
+margin_bottom = 414.0
+script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 5 )
+bus = "Music"

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://mods/Custom Tape Buttons/ReplaceTapeStuff/TapeButton.tscn" type="PackedScene" id=1]
+
+[node name="SmallTapeButton" instance=ExtResource( 1 )]
+margin_right = 270.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 270, 173 )
+expand = true
+
+[node name="ScaleToFitParent" parent="." index="0"]
+rect_scale = Vector2( 0.421875, 0.421951 )
+
+[node name="ScaleToFitParent2" parent="." index="1"]
+rect_scale = Vector2( 0.421875, 0.421951 )
